@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-const FeaturedPosts = ({ posts }) => {
+const CategoryPosts = ({ posts, category }) => {
 	return (
 		<section className="posts">
+			<h3>{category}</h3>
 			<div className="posts-list">
 				{posts.data.posts.edges.map(({ node }) => (
 					<div
@@ -32,6 +33,11 @@ const FeaturedPosts = ({ posts }) => {
 
 			<style jsx>
 				{`
+					h3 {
+						font-size: 2.5rem;
+						margin-bottom: 3rem;
+					}
+
 					.posts {
 						padding-bottom: 4rem;
 					}
@@ -47,7 +53,7 @@ const FeaturedPosts = ({ posts }) => {
 						border-radius: 20px;
 						transition: 0.2s all;
 						max-width: 384px;
-						height: 475px;
+						height: 384px;
 					}
 
 					.post:hover {
@@ -88,4 +94,4 @@ const FeaturedPosts = ({ posts }) => {
 	);
 };
 
-export default FeaturedPosts;
+export default CategoryPosts;

@@ -3,20 +3,25 @@ import { NextSeo } from 'next-seo';
 import Layout from '../components/Layout';
 import FeaturedPosts from '../components/FeaturedPosts';
 import axios from 'axios';
+import CategoryPosts from '../components/CategoryPosts';
 
-const Index = ({ featured }) => {
+const Index = ({ featured, budget, ethical, guides, cravings }) => {
 	return (
 		<Layout>
 			<NextSeo title="Travel Eatinerary" description="A Travel Blog" />
 			<main>
 				<div className="container">
 					<FeaturedPosts posts={featured} />
+					<CategoryPosts posts={budget} category="Budget" />
+					<CategoryPosts posts={ethical} category="Ethical" />
+					<CategoryPosts posts={guides} category="Guides" />
+					<CategoryPosts posts={cravings} category="Cravings" />
 				</div>
 			</main>
 
 			<style jsx>{`
 				main {
-					padding: 3rem 0;
+					padding: 5rem 0;
 				}
 
 				h1 {
