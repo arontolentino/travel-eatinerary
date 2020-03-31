@@ -26,34 +26,36 @@ const Header = () => {
 				</nav>
 			</div>
 
-			<style jsx>{`
-				header {
-					background: #fff;
-					padding: 2rem 0;
-					box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-				}
+			<style jsx>
+				{`
+					header {
+						background: #fff;
+						padding: 2rem 0;
+						box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+					}
 
-				.container {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-				}
+					.container {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+					}
 
-				.logo {
-					font-size: 3rem;
-					font-weight: 700;
-				}
+					.logo {
+						font-size: 3rem;
+						font-weight: 700;
+					}
 
-				ul {
-					display: flex;
-					list-style: none;
-					font-size: 1.6rem;
-				}
+					ul {
+						display: flex;
+						list-style: none;
+						font-size: 1.6rem;
+					}
 
-				li:not(:last-of-type) {
-					margin-right: 2rem;
-				}
-			`}</style>
+					li:not(:last-of-type) {
+						margin-right: 2rem;
+					}
+				`}
+			</style>
 		</header>
 	);
 };

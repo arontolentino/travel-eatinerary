@@ -1,0 +1,43 @@
+import React from 'react';
+import Link from 'next/link';
+
+const FeaturedPosts = ({ posts }) => {
+	return (
+		<section className="featured">
+			{posts.data.posts.edges.map(({ node }) => (
+				<div className="post">
+					<Link href={`/posts/${node.slug}`}>
+					
+						<a href={`/posts/${node.slug}`}>
+							<div className="tag">{node.tags.nodes[0].name}</div>
+							<div className="details">
+								<div className="title">{node.title}</div>
+								<div className="description">{node.acf.shortDescription}</div>
+							</div>
+						</a>
+					</Link>
+				</div>
+			))}
+
+			<style jsx>
+				{`
+					.featured {
+						display: flex;
+						justify-content: space-between;
+					}
+
+					a {
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						max-width: 384px;
+						height: 475px;
+						padding: 3rem;
+					}
+				`}
+			</style>
+		</section>
+	);
+};
+
+export default FeaturedPosts;

@@ -4,13 +4,13 @@ import Layout from '../components/Layout';
 import FeaturedPosts from '../components/FeaturedPosts';
 import axios from 'axios';
 
-const Index = () => {
+const Index = ({ featured }) => {
 	return (
 		<Layout>
 			<NextSeo title="Travel Eatinerary" description="A Travel Blog" />
 			<main>
 				<div className="container">
-					<FeaturedPosts />
+					<FeaturedPosts posts={featured} />
 				</div>
 			</main>
 
@@ -36,11 +36,19 @@ Index.getInitialProps = async () => {
             node {
               id
               slug
+              title
               date
-              content(format: RAW)
               acf {
                 shortDescription
               }
+              tags {
+                nodes {
+                  name
+                }
+							}
+							featuredImage {
+								mediaItemUrl
+							}
             }
           }
         }
