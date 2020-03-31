@@ -1,0 +1,28 @@
+{
+	"name": "travel-eatinerary",
+	"version": "1.0.0",
+	"description": "A server-side rendered travel blog made with React.js, Next.js, WordPress headless CMS, and WPGraphQL",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/arontolentino/travel-eatinerary.git"
+	},
+	"author": "Aron Tolentino",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/arontolentino/travel-eatinerary/issues"
+	},
+	"homepage": "https://github.com/arontolentino/travel-eatinerary#readme",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"next": "^9.3.3",
+		"next-seo": "^4.4.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	}
+}
