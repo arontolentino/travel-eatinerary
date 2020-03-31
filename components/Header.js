@@ -32,6 +32,7 @@ const Header = () => {
 						background: #fff;
 						padding: 2rem 0;
 						box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+						width: 100%;
 					}
 
 					.container {
@@ -53,6 +54,16 @@ const Header = () => {
 
 					li:not(:last-of-type) {
 						margin-right: 2rem;
+					}
+
+					@media only screen and (max-width: 425px) {
+						.container {
+							flex-direction: column;
+						}
+
+						.logo {
+							margin-bottom: 1rem;
+						}
 					}
 				`}
 			</style>

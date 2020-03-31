@@ -82,6 +82,16 @@ const FeaturedPosts = ({ posts }) => {
 					p {
 						font-size: 1.6rem;
 					}
+
+					@media only screen and (max-width: 425px) {
+						.posts-list {
+							flex-direction: column;
+						}
+
+						.post:not(:last-child) {
+							margin-bottom: 3rem;
+						}
+					}
 				`}
 			</style>
 		</section>
