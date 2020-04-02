@@ -1,33 +1,87 @@
-import React from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
 
-const FeaturedPosts = ({ posts }) => {
+const FeaturedPosts = ({ category, noOfPosts }) => {
+	const [posts, setPosts] = useState();
+
+	useEffect(() => {
+		fetchCategoryPosts(category, noOfPosts);
+	}, [posts]);
+
+	const fetchCategoryPosts = (category, noOfPosts) => {
+		const query = `
+      query HomePagePosts {
+        posts(where: {categoryName: "${category}"}, first: ${noOfPosts || 3}) {
+          edges {
+            node {
+              id
+              slug
+              title
+              date
+              acf {
+                shortDescription
+              }
+              tags {
+                nodes {
+                  name
+                }
+							}
+							featuredImage {
+								mediaItemUrl
+							}
+            }
+          }
+        }
+      }
+    `;
+
+		axios({
+			url: 'https://cms.traveleatinerary.com/graphql',
+			method: 'POST',
+			data: {
+				query
+			}
+		}).then(res => {
+			setPosts(res.data);
+		});
+	};
+
 	return (
 		<section className="posts">
 			<div className="posts-list">
-				{posts.data.posts.edges.map(({ node }) => (
-					<div
-						className="post"
-						key={node.slug}
-						style={{
-							backgroundImage: `linear-gradient(rgba(100, 100, 100, 0.4), rgba(100, 100, 100, 0.4)), url(${node.featuredImage.mediaItemUrl})`
-						}}
-					>
-						<Link href={`/posts/${node.slug}`}>
-							<a href={`/posts/${node.slug}`}>
-								<div className="tag">{node.tags.nodes[0].name}</div>
-								<div className="details">
-									<div className="title">
-										<h2>{node.title}</h2>
+				{posts ? (
+					posts.data.posts.edges.map(({ node }) => (
+						<div
+							className="post"
+							key={node.slug}
+							style={{
+								backgroundImage: `linear-gradient(rgba(100, 100, 100, 0.4), rgba(100, 100, 100, 0.4)), url(${node.featuredImage.mediaItemUrl})`
+							}}
+						>
+							<Link href={`/posts/${node.slug}`}>
+								<a href={`/posts/${node.slug}`}>
+									<div className="tag">{node.tags.nodes[0].name}</div>
+									<div className="details">
+										<div className="title">
+											<h2>{node.title}</h2>
+										</div>
+										<div className="description">
+											<p>{node.acf.shortDescription}</p>
+										</div>
 									</div>
-									<div className="description">
-										<p>{node.acf.shortDescription}</p>
-									</div>
-								</div>
-							</a>
-						</Link>
-					</div>
-				))}
+								</a>
+							</Link>
+						</div>
+					))
+				) : (
+					<Fragment>
+						<Skeleton width={384} height={475} />
+						<Skeleton width={384} height={475} />
+						<Skeleton width={384} height={475} />
+					</Fragment>
+				)}
 			</div>
 
 			<style jsx>
@@ -46,7 +100,7 @@ const FeaturedPosts = ({ posts }) => {
 						background-size: cover;
 						border-radius: 20px;
 						transition: 0.2s all;
-						max-width: 384px;
+						width: 384px;
 						height: 475px;
 					}
 
