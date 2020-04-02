@@ -3,54 +3,54 @@ import Link from 'next/link';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 
-const CategoryPosts = ({ category, noOfPosts }) => {
-	const [posts, setPosts] = useState();
+const CategoryPosts = ({ posts, category }) => {
+	// const [posts, setPosts] = useState();
 
-	useEffect(() => {
-		fetchCategoryPosts(category, noOfPosts);
-	}, [posts]);
+	// useEffect(() => {
+	// 	fetchCategoryPosts(category, noOfPosts);
+	// }, [posts]);
 
-	const fetchCategoryPosts = (category, noOfPosts) => {
-		const query = `
-      query HomePagePosts {
-        posts(where: {categoryName: "${category}"}, first: ${noOfPosts || 3}) {
-          edges {
-            node {
-              id
-              slug
-              title
-              date
-              acf {
-                shortDescription
-              }
-              tags {
-                nodes {
-                  name
-                }
-							}
-							featuredImage {
-								mediaItemUrl
-							}
-            }
-          }
-        }
-      }
-    `;
+	// const fetchCategoryPosts = (category, noOfPosts) => {
+	// 	const query = `
+	//     query HomePagePosts {
+	//       posts(where: {categoryName: "${category}"}, first: ${noOfPosts || 3}) {
+	//         edges {
+	//           node {
+	//             id
+	//             slug
+	//             title
+	//             date
+	//             acf {
+	//               shortDescription
+	//             }
+	//             tags {
+	//               nodes {
+	//                 name
+	//               }
+	// 						}
+	// 						featuredImage {
+	// 							mediaItemUrl
+	// 						}
+	//           }
+	//         }
+	//       }
+	//     }
+	//   `;
 
-		axios({
-			url: 'https://cms.traveleatinerary.com/graphql',
-			method: 'POST',
-			data: {
-				query
-			}
-		})
-			.then(res => {
-				setPosts(res.data);
-			})
-			.catch(err => {
-				console.error(err.message);
-			});
-	};
+	// 	axios({
+	// 		url: 'https://cms.traveleatinerary.com/graphql',
+	// 		method: 'POST',
+	// 		data: {
+	// 			query
+	// 		}
+	// 	})
+	// 		.then(res => {
+	// 			setPosts(res.data);
+	// 		})
+	// 		.catch(err => {
+	// 			console.error(err.message);
+	// 		});
+	// };
 
 	return (
 		<section className="posts">

@@ -3,50 +3,50 @@ import Link from 'next/link';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 
-const FeaturedPosts = ({ category, noOfPosts }) => {
-	const [posts, setPosts] = useState();
+const FeaturedPosts = ({ posts }) => {
+	// const [posts, setPosts] = useState();
 
-	useEffect(() => {
-		fetchCategoryPosts(category, noOfPosts);
-	}, [posts]);
+	// useEffect(() => {
+	// 	fetchCategoryPosts(category, noOfPosts);
+	// }, [posts]);
 
-	const fetchCategoryPosts = (category, noOfPosts) => {
-		const query = `
-      query HomePagePosts {
-        posts(where: {categoryName: "${category}"}, first: ${noOfPosts || 3}) {
-          edges {
-            node {
-              id
-              slug
-              title
-              date
-              acf {
-                shortDescription
-              }
-              tags {
-                nodes {
-                  name
-                }
-							}
-							featuredImage {
-								mediaItemUrl
-							}
-            }
-          }
-        }
-      }
-    `;
+	// const fetchCategoryPosts = (category, noOfPosts) => {
+	// 	const query = `
+	//     query HomePagePosts {
+	//       posts(where: {categoryName: "${category}"}, first: ${noOfPosts || 3}) {
+	//         edges {
+	//           node {
+	//             id
+	//             slug
+	//             title
+	//             date
+	//             acf {
+	//               shortDescription
+	//             }
+	//             tags {
+	//               nodes {
+	//                 name
+	//               }
+	// 						}
+	// 						featuredImage {
+	// 							mediaItemUrl
+	// 						}
+	//           }
+	//         }
+	//       }
+	//     }
+	//   `;
 
-		axios({
-			url: 'https://cms.traveleatinerary.com/graphql',
-			method: 'POST',
-			data: {
-				query
-			}
-		}).then(res => {
-			setPosts(res.data);
-		});
-	};
+	// 	axios({
+	// 		url: 'https://cms.traveleatinerary.com/graphql',
+	// 		method: 'POST',
+	// 		data: {
+	// 			query
+	// 		}
+	// 	}).then(res => {
+	// 		setPosts(res.data);
+	// 	});
+	// };
 
 	return (
 		<section className="posts">
