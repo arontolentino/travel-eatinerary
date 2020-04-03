@@ -42,6 +42,10 @@ const Post = ({ post }) => {
 							dangerouslySetInnerHTML={{ __html: content }}
 						></div>
 					</article>
+					{/* <section className="related">
+						<h3>You might also like</h3>
+						<div className="related-posts"></div>
+					</section> */}
 				</div>
 			</main>
 
