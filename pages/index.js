@@ -19,16 +19,6 @@ const Index = ({ featured, budget, ethical, guides, cravings }) => {
 					<CategoryPosts posts={cravings} category="Cravings" />
 				</div>
 			</main>
-
-			<style jsx>{`
-				main {
-					padding: 5rem 0;
-				}
-
-				h1 {
-					color: pink;
-				}
-			`}</style>
 		</Layout>
 	);
 };

@@ -4,6 +4,8 @@
 
 @import 'https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap';
 
+@import 'https://fonts.googleapis.com/css?family=Nunito+Sans:300&display=swap" rel="stylesheet';
+
 /*       */
 /* SETUP */
 /*       */
@@ -202,6 +204,10 @@ body {
 a {
 	color: inherit;
 	text-decoration: none;
+}
+
+main {
+	padding: 5rem 0;
 }
 
 .react-loading-skeleton {

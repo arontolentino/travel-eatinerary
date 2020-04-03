@@ -4,50 +4,6 @@ import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 
 const FeaturedPosts = ({ posts }) => {
-	// const [posts, setPosts] = useState();
-
-	// useEffect(() => {
-	// 	fetchCategoryPosts(category, noOfPosts);
-	// }, [posts]);
-
-	// const fetchCategoryPosts = (category, noOfPosts) => {
-	// 	const query = `
-	//     query HomePagePosts {
-	//       posts(where: {categoryName: "${category}"}, first: ${noOfPosts || 3}) {
-	//         edges {
-	//           node {
-	//             id
-	//             slug
-	//             title
-	//             date
-	//             acf {
-	//               shortDescription
-	//             }
-	//             tags {
-	//               nodes {
-	//                 name
-	//               }
-	// 						}
-	// 						featuredImage {
-	// 							mediaItemUrl
-	// 						}
-	//           }
-	//         }
-	//       }
-	//     }
-	//   `;
-
-	// 	axios({
-	// 		url: 'https://cms.traveleatinerary.com/graphql',
-	// 		method: 'POST',
-	// 		data: {
-	// 			query
-	// 		}
-	// 	}).then(res => {
-	// 		setPosts(res.data);
-	// 	});
-	// };
-
 	return (
 		<section className="posts">
 			<div className="posts-list">
@@ -55,13 +11,13 @@ const FeaturedPosts = ({ posts }) => {
 					posts.data.posts.edges.map(({ node }) => (
 						<div
 							className="post"
-							key={node.slug}
+							key={node.id}
 							style={{
 								backgroundImage: `linear-gradient(rgba(100, 100, 100, 0.4), rgba(100, 100, 100, 0.4)), url(${node.featuredImage.mediaItemUrl})`
 							}}
 						>
-							<Link href={`/posts/${node.slug}`}>
-								<a href={`/posts/${node.slug}`}>
+							<Link href={`/posts/${node.id}`}>
+								<a href={`/posts/${node.id}`}>
 									<div className="tag">{node.tags.nodes[0].name}</div>
 									<div className="details">
 										<div className="title">
@@ -101,7 +57,7 @@ const FeaturedPosts = ({ posts }) => {
 						border-radius: 20px;
 						transition: 0.2s all;
 						width: 384px;
-						height: 475px;
+						height: 500px;
 					}
 
 					.post:hover {
@@ -129,7 +85,7 @@ const FeaturedPosts = ({ posts }) => {
 					}
 
 					h2 {
-						font-size: 3.6rem;
+						font-size: 3rem;
 						margin-bottom: 2rem;
 					}
 
