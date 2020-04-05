@@ -13,12 +13,13 @@ const FeaturedPosts = ({ posts }) => {
 							className="post"
 							key={node.id}
 							style={{
-								backgroundImage: `linear-gradient(rgba(100, 100, 100, 0.4), rgba(100, 100, 100, 0.4)), url(${node.featuredImage.mediaItemUrl})`
+								backgroundImage: `linear-gradient(rgba(100, 100, 100, 0.4), rgba(100, 100, 100, 0.4)), url(${node.featuredImage.mediaItemUrl})`,
 							}}
 						>
 							<Link href={`/posts/${node.id}`}>
 								<a href={`/posts/${node.id}`}>
-									<div className="tag">{node.tags.nodes[0].name}</div>
+									{/* <div className="tag">{node.tags.nodes[0].name || null}</div> */}
+									<div className="tag">Placeholder</div>
 									<div className="details">
 										<div className="title">
 											<h2>{node.title}</h2>

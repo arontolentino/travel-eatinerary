@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NextSeo } from 'next-seo';
 
@@ -24,7 +24,7 @@ const Post = ({ post }) => {
 							/>
 							<div className="details">
 								<div className="tags">
-									{tags.nodes.map(tag => (
+									{tags.nodes.map((tag) => (
 										<div className="tag">
 											<p>{tag.name}</p>
 										</div>
@@ -124,6 +124,7 @@ const Post = ({ post }) => {
 						margin: 0 auto;
 						border-radius: 2rem;
 						box-shadow: 0 4px 16px rgb(0, 0, 0, 0.2);
+						max-width: 100%;
 					}
 
 					.content :global(figcaption) {
@@ -156,14 +157,14 @@ export async function getStaticPaths() {
             }
           }
         }
-      `
-		}
+      `,
+		},
 	});
 
 	const posts = await res.data;
 
 	// Get the paths we want to pre-render based on posts
-	const paths = posts.data.posts.edges.map(post => {
+	const paths = posts.data.posts.edges.map((post) => {
 		return `/posts/${post.node.id}`;
 	});
 
@@ -203,8 +204,8 @@ export async function getStaticProps({ params }) {
             }
           }
         }
-      `
-		}
+      `,
+		},
 	});
 
 	const selectedPost = await res.data.data.post;
