@@ -19,11 +19,11 @@ const CategoryPosts = ({ posts, category }) => {
 						>
 							<Link href={`/posts/${node.id}`}>
 								<a href={`/posts/${node.id}`}>
-									{/* <div className="tag">{node.tags.nodes[0].name || null}</div> */}
-									<div className="tag">Placeholder</div>
+									<div className="tag">{node.tags.nodes[0].name || null}</div>
+
 									<div className="details">
 										<div className="title">
-											<h2>{node.title}</h2>
+											<h2 dangerouslySetInnerHTML={{ __html: node.title }}></h2>
 										</div>
 										<div className="description">
 											<p>{node.acf.shortDescription}</p>
