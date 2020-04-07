@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { DiscussionEmbed } from 'disqus-react';
 import { NextSeo } from 'next-seo';
 
 import Layout from '../../components/Layout';
 
 const Post = ({ post }) => {
-	const { title, content, acf, featuredImage, author, tags } = post;
+	const { title, content, acf, featuredImage, author, tags, id } = post;
 
 	return (
 		<Layout>
@@ -41,6 +42,17 @@ const Post = ({ post }) => {
 							className="content"
 							dangerouslySetInnerHTML={{ __html: content }}
 						></div>
+
+						<section className="comments">
+							<DiscussionEmbed
+								shortname="traveleatinerary"
+								config={{
+									url: 'https://www.traveleatinerary.com/',
+									identifier: id,
+									title: title,
+								}}
+							/>
+						</section>
 					</article>
 					{/* <section className="related">
 						<h3>You might also like</h3>
@@ -133,6 +145,25 @@ const Post = ({ post }) => {
 						text-align: center;
 						margin-top: 2rem;
 						font-size: 1.5rem;
+					}
+
+					.content :global(ul) {
+						font-family: 'Nunito Sans', sans-serif;
+						font-size: 2rem;
+						font-weight: 300;
+						line-height: 3.5rem;
+						margin-bottom: 3rem;
+						margin-left: 5rem;
+					}
+
+					.content :global(li):not(:last-child) {
+						margin-bottom: 2rem;
+					}
+
+					.comments {
+						max-width: 740px;
+
+						margin: 0 auto;
 					}
 				`}
 			</style>
