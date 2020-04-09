@@ -57,7 +57,7 @@ const FeaturedPosts = ({ posts }) => {
 						background-size: cover;
 						border-radius: 20px;
 						transition: 0.2s all;
-						width: 384px;
+						max-width: 384px;
 						height: 500px;
 					}
 

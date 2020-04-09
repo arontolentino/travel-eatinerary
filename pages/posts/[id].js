@@ -170,6 +170,26 @@ const Post = ({ post }) => {
 					.comments :global(.disqus-footer__wrapper) {
 						display: none;
 					}
+
+					@media only screen and (max-width: 425px) {
+						h1 {
+							font-size: 3rem;
+						}
+
+						.intro {
+							flex-direction: column-reverse;
+							margin-bottom: 3.5rem;
+						}
+
+						.details {
+							margin-left: 0;
+							margin-bottom: 2rem;
+						}
+
+						.hero-image {
+							width: 100%;
+						}
+					}
 				`}
 			</style>
 		</Layout>
