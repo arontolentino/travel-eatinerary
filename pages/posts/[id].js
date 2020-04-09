@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { DiscussionEmbed } from 'disqus-react';
 import { NextSeo } from 'next-seo';
+import he from 'he';
 
 import Layout from '../../components/Layout';
 
@@ -11,7 +12,7 @@ const Post = ({ post }) => {
 	return (
 		<Layout>
 			<NextSeo
-				title={`${title} - Travel Eatinerary`}
+				title={`${he.decode(title)} - Travel Eatinerary`}
 				description={acf.shortDescription}
 			/>
 			<main>
@@ -31,7 +32,7 @@ const Post = ({ post }) => {
 										</div>
 									))}
 								</div>
-								<h1>{title}</h1>
+								<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 								<div className="meta">
 									2 days ago by {author.firstName} {author.lastName}
 								</div>
@@ -165,6 +166,10 @@ const Post = ({ post }) => {
 
 						margin: 0 auto;
 					}
+
+					.comments :global(.disqus-footer__wrapper) {
+						display: none;
+					}
 				`}
 			</style>
 		</Layout>
@@ -216,7 +221,7 @@ export async function getStaticProps({ params }) {
         query MyQuery {
           post(id: "${params.id}") {
             id
-            title
+            title(format: RENDERED)
             content
             acf {
               shortDescription
@@ -239,7 +244,8 @@ export async function getStaticProps({ params }) {
 		},
 	});
 
-	const selectedPost = await res.data.data.post;
+	let selectedPost = await res.data.data.post;
+	// selectedPost = JSON.stringify(selectedPost);
 
 	// Pass post data to the page via props
 	return { props: { post: selectedPost } };

@@ -22,6 +22,7 @@
 	"dependencies": {
 		"axios": "^0.19.2",
 		"disqus-react": "^1.0.8",
+		"he": "^1.2.0",
 		"moment": "^2.24.0",
 		"next": "^9.3.3",
 		"next-seo": "^4.4.0",

@@ -32,7 +32,7 @@ export async function getStaticProps() {
             node {
               id
               slug
-              title
+							title
               date
               acf {
                 shortDescription
@@ -56,8 +56,8 @@ export async function getStaticProps() {
 				url: 'https://cms.traveleatinerary.com/graphql',
 				method: 'POST',
 				data: {
-					query
-				}
+					query,
+				},
 			});
 
 			return await res.data;
@@ -72,14 +72,17 @@ export async function getStaticProps() {
 	const guides = await getPosts('guides', 3);
 	const cravings = await getPosts('cravings', 3);
 
+	const test = JSON.stringify(featured);
+	console.log(test);
+
 	return {
 		props: {
 			featured,
 			budget,
 			ethical,
 			guides,
-			cravings
-		}
+			cravings,
+		},
 	};
 }
 
