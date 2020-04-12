@@ -1,11 +1,19 @@
+import React, { useState } from 'react';
 import Link from 'next/link';
+import Hamburger from 'hamburger-react';
 
 const Header = () => {
+	const [hamburger, setHamburger] = useState('');
+
 	return (
 		<header>
 			<div className="container">
-				<span className="logo">Travel Eatinerary</span>
-				<nav>
+				<img
+					src="https://cms.traveleatinerary.com/wp-content/uploads/2020/04/travel-eatinerary-logo.png"
+					alt="Travel Eatinerary Logo"
+					className="logo"
+				/>
+				<nav style={{ display: hamburger }}>
 					<ul>
 						<li>
 							<Link href="/">
@@ -24,6 +32,17 @@ const Header = () => {
 						</li>
 					</ul>
 				</nav>
+				<div className="hamburger">
+					<Hamburger
+						onToggle={(toggled) => {
+							if (toggled) {
+								setHamburger('block');
+							} else {
+								setHamburger('');
+							}
+						}}
+					/>
+				</div>
 			</div>
 
 			<style jsx>
@@ -35,6 +54,10 @@ const Header = () => {
 						width: 100%;
 					}
 
+					.nav {
+						display: block;
+					}
+
 					.container {
 						display: flex;
 						justify-content: space-between;
@@ -42,8 +65,7 @@ const Header = () => {
 					}
 
 					.logo {
-						font-size: 3rem;
-						font-weight: 700;
+						width: 17rem;
 					}
 
 					ul {
@@ -56,13 +78,41 @@ const Header = () => {
 						margin-right: 2rem;
 					}
 
+					.hamburger {
+						display: none;
+					}
+
 					@media only screen and (max-width: 425px) {
-						.container {
+						nav {
+							display: none;
+							position: absolute;
+							top: 88.1667px;
+							width: 100vw;
+							left: 0;
+							padding: 0 2rem;
+							z-index: 99;
+							background: #f3f3f3;
+							 {
+								/* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06); */
+							}
+						}
+
+						ul {
+							display: flex;
 							flex-direction: column;
 						}
 
-						.logo {
-							margin-bottom: 1.5rem;
+						li {
+							text-align: center;
+							padding: 2.5rem 0;
+						}
+
+						li:not(:last-of-type) {
+							margin-right: 0;
+						}
+
+						.hamburger {
+							display: block;
 						}
 					}
 				`}
