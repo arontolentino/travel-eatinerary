@@ -8,6 +8,8 @@ import Layout from '../../components/Layout';
 
 const Post = ({ post }) => {
 	const { title, content, acf, featuredImage, author, tags, id } = post;
+	console.log(id);
+	console.log(title);
 
 	return (
 		<Layout>
@@ -48,17 +50,13 @@ const Post = ({ post }) => {
 							<DiscussionEmbed
 								shortname="traveleatinerary"
 								config={{
-									url: 'https://www.traveleatinerary.com/',
+									url: `https://www.traveleatinerary.com/posts/${id}`,
 									identifier: id,
-									title: title,
+									title: he.decode(title),
 								}}
 							/>
 						</section>
 					</article>
-					{/* <section className="related">
-						<h3>You might also like</h3>
-						<div className="related-posts"></div>
-					</section> */}
 				</div>
 			</main>
 
@@ -163,12 +161,7 @@ const Post = ({ post }) => {
 
 					.comments {
 						max-width: 740px;
-
 						margin: 0 auto;
-					}
-
-					.comments :global(.disqus-footer__wrapper) {
-						display: none;
 					}
 
 					@media only screen and (max-width: 425px) {
@@ -197,8 +190,6 @@ const Post = ({ post }) => {
 };
 
 export async function getStaticPaths() {
-	// Call an external API endpoint to get posts
-
 	const res = await axios({
 		url: 'https://cms.traveleatinerary.com/graphql',
 		method: 'POST',
@@ -219,20 +210,14 @@ export async function getStaticPaths() {
 
 	const posts = await res.data;
 
-	// Get the paths we want to pre-render based on posts
 	const paths = posts.data.posts.edges.map((post) => {
 		return `/posts/${post.node.id}`;
 	});
 
-	// We'll pre-render only these paths at build time.
-	// { fallback: false } means other routes should 404.
 	return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-	// params contains the post `id`.
-	// If the route is like /posts/1, then params.id is 1
-
 	const res = await axios({
 		url: 'https://cms.traveleatinerary.com/graphql',
 		method: 'POST',
@@ -265,9 +250,6 @@ export async function getStaticProps({ params }) {
 	});
 
 	let selectedPost = await res.data.data.post;
-	// selectedPost = JSON.stringify(selectedPost);
-
-	// Pass post data to the page via props
 	return { props: { post: selectedPost } };
 }
 
