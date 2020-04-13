@@ -8,11 +8,14 @@ const Header = () => {
 	return (
 		<header>
 			<div className="container">
-				<img
-					src="https://cms.traveleatinerary.com/wp-content/uploads/2020/04/travel-eatinerary-logo.png"
-					alt="Travel Eatinerary Logo"
-					className="logo"
-				/>
+				<a href="https://www.traveleatinerary.com/">
+					<img
+						src="https://cms.traveleatinerary.com/wp-content/uploads/2020/04/travel-eatinerary-logo.png"
+						alt="Travel Eatinerary Logo"
+						className="logo"
+					/>
+				</a>
+
 				<nav style={{ display: hamburger }}>
 					<ul>
 						<li>
@@ -23,11 +26,6 @@ const Header = () => {
 						<li>
 							<Link href="/about">
 								<a href="/">About</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/contact">
-								<a href="/">Contact</a>
 							</Link>
 						</li>
 					</ul>
@@ -75,7 +73,16 @@ const Header = () => {
 					}
 
 					li:not(:last-of-type) {
-						margin-right: 2rem;
+						margin-right: 3rem;
+					}
+
+					a {
+						transition: 0.2s all;
+					}
+
+					a:hover {
+						color: #ffd430;
+						font-weight: 500;
 					}
 
 					.hamburger {

@@ -159,6 +159,11 @@ const Post = ({ post }) => {
 						margin-bottom: 2rem;
 					}
 
+					.content :global(.blocks-gallery-grid) {
+						list-style: none;
+						margin-left: 0;
+					}
+
 					.comments {
 						max-width: 740px;
 						margin: 0 auto;
