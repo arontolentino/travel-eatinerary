@@ -56,6 +56,13 @@ const About = () => {
 								thrifters, ecotourists, animal activists, DIYers, and travel
 								planners!
 							</p>
+							<p>
+								Connect with me on Instagram {''}
+								<a href="https://www.instagram.com/mytraveleatinerary/">
+									@mytraveleatinery
+								</a>
+								!
+							</p>
 						</div>
 					</section>
 				</div>
@@ -65,6 +72,10 @@ const About = () => {
 				h1 {
 					font-size: 3rem;
 					margin-bottom: 2rem;
+				}
+
+				a {
+					color: #ffd430;
 				}
 
 				p {
