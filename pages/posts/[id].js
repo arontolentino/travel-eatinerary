@@ -169,11 +169,7 @@ const Post = ({ post }) => {
 						margin: 0 auto;
 					}
 
-					@media only screen and (max-width: 425px) {
-						h1 {
-							font-size: 3rem;
-						}
-
+					@media only screen and (max-width: 1000px) {
 						.intro {
 							flex-direction: column-reverse;
 							margin-bottom: 3.5rem;
@@ -186,6 +182,12 @@ const Post = ({ post }) => {
 
 						.hero-image {
 							width: 100%;
+						}
+					}
+
+					@media only screen and (max-width: 425px) {
+						h1 {
+							font-size: 3rem;
 						}
 					}
 				`}

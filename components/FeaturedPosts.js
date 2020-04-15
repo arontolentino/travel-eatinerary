@@ -94,9 +94,13 @@ const FeaturedPosts = ({ posts }) => {
 						font-size: 1.6rem;
 					}
 
-					@media only screen and (max-width: 425px) {
+					@media only screen and (max-width: 1230px) {
 						.posts-list {
 							flex-direction: column;
+						}
+
+						.post {
+							max-width: 100%;
 						}
 
 						.post:not(:last-child) {
