@@ -20,7 +20,7 @@
 	},
 	"homepage": "https://github.com/arontolentino/travel-eatinerary#readme",
 	"dependencies": {
-		"axios": "^0.19.2",
+		"axios": "^0.21.1",
 		"disqus-react": "^1.0.8",
 		"hamburger-react": "^2.0.0",
 		"he": "^1.2.0",
