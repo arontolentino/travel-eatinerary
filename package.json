@@ -24,7 +24,7 @@
 		"disqus-react": "^1.0.8",
 		"hamburger-react": "^2.0.0",
 		"he": "^1.2.0",
-		"moment": "^2.24.0",
+		"moment": "^2.29.2",
 		"next": "^9.3.3",
 		"next-seo": "^4.4.0",
 		"react": "^16.13.1",
